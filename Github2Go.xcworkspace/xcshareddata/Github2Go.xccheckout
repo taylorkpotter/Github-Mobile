@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4ADE214A-9E00-4C9B-B1A6-5ACCD4608EA8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Github2Go</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7BFBAD9B-AE5D-4CBC-855F-659546D8DBD0</key>
+		<string>ssh://github.com/taylorkpotter/Github2Go.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Github2Go.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7BFBAD9B-AE5D-4CBC-855F-659546D8DBD0</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/taylorkpotter/Github2Go.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7BFBAD9B-AE5D-4CBC-855F-659546D8DBD0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7BFBAD9B-AE5D-4CBC-855F-659546D8DBD0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Github2Go</string>
+		</dict>
+	</array>
+</dict>
+</plist>
