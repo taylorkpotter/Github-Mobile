@@ -14,6 +14,7 @@
 		D75F01441905B41100AF297E /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01431905B41100AF297E /* UsersViewController.m */; };
 		D75F01471905B41A00AF297E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01461905B41A00AF297E /* SearchViewController.m */; };
 		D7654C2D1905D81C0026917A /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7654C2C1905D81C0026917A /* WebViewController.m */; };
+		D780E18F1907BFA200F7FB49 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */; };
 		D7ACD6DA19072B6D001083A2 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ACD6D919072B6D001083A2 /* NetworkController.m */; };
 		D7AF4ADF1905AD9500715E61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF4ADE1905AD9500715E61 /* Foundation.framework */; };
 		D7AF4AE11905AD9500715E61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF4AE01905AD9500715E61 /* CoreGraphics.framework */; };
@@ -58,6 +59,7 @@
 		D75F01491905B50300AF297E /* MenuProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuProtocol.h; sourceTree = "<group>"; };
 		D7654C2B1905D81C0026917A /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		D7654C2C1905D81C0026917A /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		D7ACD6D819072B6D001083A2 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
 		D7ACD6D919072B6D001083A2 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
 		D7AF4ADB1905AD9500715E61 /* Github2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Github2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 		D7AF4AE51905AD9500715E61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */,
 				D74129111905BEC000198C78 /* icon-menu.png */,
 				D7AF4AE61905AD9500715E61 /* Github2Go-Info.plist */,
 				D7AF4AE71905AD9500715E61 /* InfoPlist.strings */,
@@ -286,6 +289,7 @@
 				D7AF4AF71905AD9500715E61 /* Images.xcassets in Resources */,
 				D7AF4AE91905AD9500715E61 /* InfoPlist.strings in Resources */,
 				D7AF4AF21905AD9500715E61 /* Main.storyboard in Resources */,
+				D780E18F1907BFA200F7FB49 /* Icon-Small@2x.png in Resources */,
 				D74129121905BEC000198C78 /* icon-menu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

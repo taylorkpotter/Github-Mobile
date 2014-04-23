@@ -5,7 +5,7 @@
 //  Created by Taylor Potter on 4/21/14.
 //  Copyright (c) 2014 potter.io. All rights reserved.
 //
-
+#import <QuartzCore/CALayer.h>
 #import "RootViewController.h"
 #import "ReposViewController.h"
 #import "UsersViewController.h"
@@ -14,7 +14,7 @@
 
 @interface RootViewController () <UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,MenuProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) SearchViewController *searchViewController;
 @property (strong,nonatomic) NSArray *arrayOfViewControllers;
 @property (strong,nonatomic) UIViewController *topViewController;
 @property (strong,nonatomic) UITapGestureRecognizer *tapToClose;
@@ -49,7 +49,7 @@
     
     [self setupChildViewControllers];
     [self setupDragRecognizer];
-  
+//    self.searchViewController = [SearchViewController new];
     self.tapToClose = [UITapGestureRecognizer new];
   
 
@@ -73,8 +73,13 @@
 //This sets up the prototype cell and gives it the name of the given object in the array
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  tableView.separatorColor = [UIColor clearColor];
+  tableView.backgroundColor = [UIColor colorWithRed:0.79 green:0.79 blue:0.81 alpha:1.00];
+  
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+  cell.backgroundColor = [UIColor clearColor];
   cell.textLabel.text = [self.arrayOfViewControllers[indexPath.row] title];
+//  cell.textLabel.backgroundColor = [UIColor <someColorHere>];
   return cell;
 }
 
@@ -88,15 +93,16 @@
 -(void)setupChildViewControllers
 {
   ReposViewController *repoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"repos"];
-  repoViewController.title = @"My Repos";
+  repoViewController.title = @"Repo";
   repoViewController.delegate = self;
   
   UsersViewController *usersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"users"];
-  usersViewController.title = @"Following";
+  usersViewController.title = @"Users";
   usersViewController.delegate = self;
   
   SearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
   searchViewController.title = @"Search";
+  
   searchViewController.delegate = self;
   UINavigationController *searchNav = [[UINavigationController alloc]initWithRootViewController:searchViewController];
   searchNav.navigationBarHidden = YES;
@@ -126,7 +132,9 @@
 {
   if (self.menuIsOpen)
   {
+
     [self closeMenu:nil];
+    
   }
   else
   {
@@ -137,12 +145,14 @@
 -(void)openMenu
 {
   [UIView animateWithDuration:.4 animations:^{
+    
     self.topViewController.view.frame = CGRectMake(self.view.frame.size.width * .75, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
     
   } completion:^(BOOL finished) {
     
     if (finished)
     {
+      
       [self.tapToClose addTarget:self action:@selector(closeMenu:)];
       [self.topViewController.view addGestureRecognizer:self.tapToClose];
       self.menuIsOpen = YES;

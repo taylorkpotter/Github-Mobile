@@ -56,6 +56,7 @@
 - (IBAction)menuPressed:(id)sender
 {
   [self.delegate menuPressed];
+  
 }
 
 #pragma mark - UISearchBarDelegate
@@ -128,6 +129,7 @@
 //This sets up the prototype cell and gives it the name of the given object in the array
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
   cell.textLabel.text = [self.repoArray[indexPath.row] name];
 

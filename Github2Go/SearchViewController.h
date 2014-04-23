@@ -10,6 +10,7 @@
 #import "MenuProtocol.h"
 
 @interface SearchViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIButton *switchMenuButton;
 
 @property (nonatomic,unsafe_unretained) id <MenuProtocol> delegate;
 
