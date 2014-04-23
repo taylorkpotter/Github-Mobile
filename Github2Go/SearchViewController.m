@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "Repo.h"
 
-@interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, NetworkProtocolDelegate>
+@interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *textToSearch;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -105,7 +105,7 @@
     }
 
     //Reload table once for finds all the names/urls
-    [self.  reloadData];
+    [self.tableView reloadData];
     
   } else {
     
