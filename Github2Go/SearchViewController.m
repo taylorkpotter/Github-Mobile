@@ -9,12 +9,19 @@
 #import "SearchViewController.h"
 #import "WebViewController.h"
 #import "TOWebViewController.h"
+#import "AppDelegate.h"
 #import "Repo.h"
 
-@interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong)NSMutableArray      *repoArray;
+@interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, NetworkProtocolDelegate>
+
 @property (weak, nonatomic) IBOutlet UISearchBar *textToSearch;
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) AppDelegate       *appDelegate;
+@property (weak, nonatomic) NetworkController *networkController;
+@property (strong, nonatomic) NSMutableArray  *repoArray;
+
+
 @end
 
 @implementation SearchViewController
@@ -31,9 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+      self.appDelegate = [UIApplication sharedApplication].delegate;
+      self.networkController = self.appDelegate.networkController;
   
-    //Instantiates our repoArray which will hold our search results
-    _repoArray = [NSMutableArray new];
+  
+      //Instantiates our repoArray which will hold our search results
+      _repoArray = [NSMutableArray new];
   
 }
 
@@ -95,7 +105,7 @@
     }
 
     //Reload table once for finds all the names/urls
-    [self.tableView reloadData];
+    [self.  reloadData];
     
   } else {
     
@@ -125,7 +135,6 @@
   return cell;
 }
 
-#pragma mark - Prepare for Segue
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

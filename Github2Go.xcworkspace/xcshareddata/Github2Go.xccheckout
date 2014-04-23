@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4ADE214A-9E00-4C9B-B1A6-5ACCD4608EA8</string>
+	<string>42446675-B20B-4776-8F42-DD105EF82B0A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Github2Go</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>7BFBAD9B-AE5D-4CBC-855F-659546D8DBD0</key>
-		<string>ssh://github.com/taylorkpotter/Github2Go.git</string>
+		<key>E79809BF-1916-4BDB-B991-F3FD23ED8DCE</key>
+		<string>ssh://github.com/taylorkpotter/G2G.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Github2Go.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>7BFBAD9B-AE5D-4CBC-855F-659546D8DBD0</key>
+		<key>E79809BF-1916-4BDB-B991-F3FD23ED8DCE</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/taylorkpotter/Github2Go.git</string>
+	<string>ssh://github.com/taylorkpotter/G2G.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7BFBAD9B-AE5D-4CBC-855F-659546D8DBD0</string>
+	<string>E79809BF-1916-4BDB-B991-F3FD23ED8DCE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7BFBAD9B-AE5D-4CBC-855F-659546D8DBD0</string>
+			<string>E79809BF-1916-4BDB-B991-F3FD23ED8DCE</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Github2Go</string>
 		</dict>

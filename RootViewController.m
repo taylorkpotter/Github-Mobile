@@ -10,6 +10,7 @@
 #import "ReposViewController.h"
 #import "UsersViewController.h"
 #import "SearchViewController.h"
+#import "AppDelegate.h"
 
 @interface RootViewController () <UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,MenuProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -17,6 +18,8 @@
 @property (strong,nonatomic) NSArray *arrayOfViewControllers;
 @property (strong,nonatomic) UIViewController *topViewController;
 @property (strong,nonatomic) UITapGestureRecognizer *tapToClose;
+@property (weak, nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) NetworkController *networkController;
 @property (nonatomic) BOOL menuIsOpen;
 
 @end
@@ -35,12 +38,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.appDelegate = [UIApplication sharedApplication].delegate;
+    self.networkController = self.appDelegate.networkController;
+    //self.networkController performSelector:@selector(requestOAuthAccess) withObject:nil afterDelay:.1];
+  
+  
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.userInteractionEnabled = NO;
     
     [self setupChildViewControllers];
     [self setupDragRecognizer];
+  
+    self.tapToClose = [UITapGestureRecognizer new];
+  
 
 }
 
@@ -94,7 +105,7 @@
   
   self.arrayOfViewControllers = @[repoViewController,usersViewController,searchNav];
   
-  self.topViewController = self.arrayOfViewControllers[0];
+  self.topViewController = self.arrayOfViewControllers[2];
   
   //Informs the parent which view controller is about to be added on screen
   [self addChildViewController:self.topViewController];
@@ -132,7 +143,7 @@
     
     if (finished)
     {
-      self.tapToClose = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
+      [self.tapToClose addTarget:self action:@selector(closeMenu:)];
       [self.topViewController.view addGestureRecognizer:self.tapToClose];
       self.menuIsOpen = YES;
       self.tableView.userInteractionEnabled = YES;

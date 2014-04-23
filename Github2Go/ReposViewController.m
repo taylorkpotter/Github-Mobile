@@ -7,12 +7,20 @@
 //
 
 #import "ReposViewController.h"
+#import "AppDelegate.h"
+#import "NetworkController.h"
 
-@interface ReposViewController ()
+@interface ReposViewController () <NetworkProtocolDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) AppDelegate       *appDelegate;
+@property (weak, nonatomic) NetworkController *networkController;
+@property (strong, nonatomic) NSMutableArray *usersRepoArray;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation ReposViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +34,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.appDelegate = [UIApplication sharedApplication].delegate;
+    self.networkController = self.appDelegate.networkController;
+    self.networkController.delegate = self;
+  }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  [self.networkController retreiveReposForCurrentUser];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,4 +55,40 @@
 - (IBAction)menuPressed:(id)sender {
   [self.delegate menuPressed];
 }
+
+-(void)pulledRepoArray:(NSMutableArray *)userRepos
+{
+  self.usersRepoArray = userRepos;
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    [self.tableView reloadData];
+  }];
+  
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 1;
+}
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return self.usersRepoArray.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"repoCell" forIndexPath:indexPath];
+  cell.textLabel.text = [self.usersRepoArray[indexPath.row] name];
+  NSLog(@"%@", _usersRepoArray);
+  
+  return cell;
+}
+
+
+
+
+
+
 @end

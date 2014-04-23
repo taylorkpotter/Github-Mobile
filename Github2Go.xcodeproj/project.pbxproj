@@ -14,6 +14,7 @@
 		D75F01441905B41100AF297E /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01431905B41100AF297E /* UsersViewController.m */; };
 		D75F01471905B41A00AF297E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01461905B41A00AF297E /* SearchViewController.m */; };
 		D7654C2D1905D81C0026917A /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7654C2C1905D81C0026917A /* WebViewController.m */; };
+		D7ACD6DA19072B6D001083A2 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ACD6D919072B6D001083A2 /* NetworkController.m */; };
 		D7AF4ADF1905AD9500715E61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF4ADE1905AD9500715E61 /* Foundation.framework */; };
 		D7AF4AE11905AD9500715E61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF4AE01905AD9500715E61 /* CoreGraphics.framework */; };
 		D7AF4AE31905AD9500715E61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF4AE21905AD9500715E61 /* UIKit.framework */; };
@@ -31,7 +32,6 @@
 		D7F8552719071D2D00B6DC98 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F8552619071D2D00B6DC98 /* Twitter.framework */; };
 		D7F8552919071D3700B6DC98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F8552819071D3700B6DC98 /* MessageUI.framework */; };
 		D7F8552B19071D3D00B6DC98 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F8552A19071D3D00B6DC98 /* QuartzCore.framework */; };
-		D7F8552E1907226F00B6DC98 /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F8552D1907226F00B6DC98 /* Users.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +58,8 @@
 		D75F01491905B50300AF297E /* MenuProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuProtocol.h; sourceTree = "<group>"; };
 		D7654C2B1905D81C0026917A /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		D7654C2C1905D81C0026917A /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		D7ACD6D819072B6D001083A2 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
+		D7ACD6D919072B6D001083A2 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
 		D7AF4ADB1905AD9500715E61 /* Github2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Github2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AF4ADE1905AD9500715E61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D7AF4AE01905AD9500715E61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,8 +82,6 @@
 		D7F8552619071D2D00B6DC98 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D7F8552819071D3700B6DC98 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D7F8552A19071D3D00B6DC98 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D7F8552C1907226F00B6DC98 /* Users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.h; sourceTree = "<group>"; };
-		D7F8552D1907226F00B6DC98 /* Users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.m; sourceTree = "<group>"; };
 		F0B6BC678B644CCBB788CB1E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,8 +151,8 @@
 		D7AF4AE41905AD9500715E61 /* Github2Go */ = {
 			isa = PBXGroup;
 			children = (
-				D74129111905BEC000198C78 /* icon-menu.png */,
-				D7AF4AF61905AD9500715E61 /* Images.xcassets */,
+				D7ACD6D819072B6D001083A2 /* NetworkController.h */,
+				D7ACD6D919072B6D001083A2 /* NetworkController.m */,
 				D7AF4B131905AE3800715E61 /* RootViewController.h */,
 				D7AF4B141905AE3800715E61 /* RootViewController.m */,
 				D75F01491905B50300AF297E /* MenuProtocol.h */,
@@ -167,10 +167,9 @@
 				D75F01461905B41A00AF297E /* SearchViewController.m */,
 				D74129131905C38100198C78 /* Repo.h */,
 				D74129141905C38100198C78 /* Repo.m */,
-				D7F8552C1907226F00B6DC98 /* Users.h */,
-				D7F8552D1907226F00B6DC98 /* Users.m */,
 				D75F013F1905B40B00AF297E /* ReposViewController.h */,
 				D75F01401905B40B00AF297E /* ReposViewController.m */,
+				D7AF4AF61905AD9500715E61 /* Images.xcassets */,
 				D7AF4AE51905AD9500715E61 /* Supporting Files */,
 			);
 			path = Github2Go;
@@ -179,6 +178,7 @@
 		D7AF4AE51905AD9500715E61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D74129111905BEC000198C78 /* icon-menu.png */,
 				D7AF4AE61905AD9500715E61 /* Github2Go-Info.plist */,
 				D7AF4AE71905AD9500715E61 /* InfoPlist.strings */,
 				D7AF4AEA1905AD9500715E61 /* main.m */,
@@ -338,7 +338,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7F8552E1907226F00B6DC98 /* Users.m in Sources */,
 				D74129151905C38100198C78 /* Repo.m in Sources */,
 				D75F01411905B40B00AF297E /* ReposViewController.m in Sources */,
 				D75F01441905B41100AF297E /* UsersViewController.m in Sources */,
@@ -346,6 +345,7 @@
 				D7AF4AEF1905AD9500715E61 /* AppDelegate.m in Sources */,
 				D7AF4AEB1905AD9500715E61 /* main.m in Sources */,
 				D75F01471905B41A00AF297E /* SearchViewController.m in Sources */,
+				D7ACD6DA19072B6D001083A2 /* NetworkController.m in Sources */,
 				D7AF4B151905AE3800715E61 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
