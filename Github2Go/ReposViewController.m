@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "NetworkController.h"
 
-@interface ReposViewController () <NetworkProtocolDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ReposViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) AppDelegate       *appDelegate;
 @property (weak, nonatomic) NetworkController *networkController;
@@ -36,13 +36,19 @@
     [super viewDidLoad];
     self.appDelegate = [UIApplication sharedApplication].delegate;
     self.networkController = self.appDelegate.networkController;
-    self.networkController.delegate = self;
-  }
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  [self.networkController retreiveReposForCurrentUser];
+ 
+  [self.networkController retreiveReposForCurrentUser:^(NSMutableArray *userRepoArray) {
+    self.usersRepoArray = userRepoArray;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self.tableView reloadData];
+    }];
+  }];
 
 }
 
@@ -60,7 +66,8 @@
 {
   self.usersRepoArray = userRepos;
   [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    [self.tableView reloadData];
+    [self pulledRepoArray:userRepos];
+//    [self.tableView reloadData];
   }];
   
 }

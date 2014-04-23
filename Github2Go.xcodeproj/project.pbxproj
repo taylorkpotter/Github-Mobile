@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CBD72998588E41EC820477C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF9F46976D244C2A12CB023 /* libPods.a */; };
+		D712BB861908174D005BA880 /* avatar_default.png in Resources */ = {isa = PBXBuildFile; fileRef = D712BB851908174D005BA880 /* avatar_default.png */; };
 		D74129121905BEC000198C78 /* icon-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = D74129111905BEC000198C78 /* icon-menu.png */; };
 		D74129151905C38100198C78 /* Repo.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129141905C38100198C78 /* Repo.m */; };
 		D75F01411905B40B00AF297E /* ReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01401905B40B00AF297E /* ReposViewController.m */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		2FF9F46976D244C2A12CB023 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D712BB851908174D005BA880 /* avatar_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar_default.png; path = ../avatar_default.png; sourceTree = "<group>"; };
 		D74129111905BEC000198C78 /* icon-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-menu.png"; sourceTree = "<group>"; };
 		D74129131905C38100198C78 /* Repo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repo.h; sourceTree = "<group>"; };
 		D74129141905C38100198C78 /* Repo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repo.m; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 		D7AF4AE51905AD9500715E61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D712BB851908174D005BA880 /* avatar_default.png */,
 				D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */,
 				D74129111905BEC000198C78 /* icon-menu.png */,
 				D7AF4AE61905AD9500715E61 /* Github2Go-Info.plist */,
@@ -291,6 +294,7 @@
 				D7AF4AF21905AD9500715E61 /* Main.storyboard in Resources */,
 				D780E18F1907BFA200F7FB49 /* Icon-Small@2x.png in Resources */,
 				D74129121905BEC000198C78 /* icon-menu.png in Resources */,
+				D712BB861908174D005BA880 /* avatar_default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

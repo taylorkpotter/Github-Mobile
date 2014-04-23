@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *textToSearch;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UILabel *searchViewTitle;
 
 @property (weak, nonatomic) AppDelegate       *appDelegate;
 @property (weak, nonatomic) NetworkController *networkController;
@@ -42,14 +43,22 @@
       self.networkController = self.appDelegate.networkController;
   
   
-      //Instantiates our repoArray which will hold our search results
-      _repoArray = [NSMutableArray new];
-  
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+  
+    //Instantiates our repoArray which will hold our search results
+    _repoArray = [NSMutableArray new];
+    _searchViewTitle.text = @"s e a r c h";
+  
+  
 }
 
 //Protcol method to handle slide out menu
@@ -59,6 +68,8 @@
   
 }
 
+
+
 #pragma mark - UISearchBarDelegate
 
 //As a delegate of UISearchBar we can perform this method to obtain the queried string
@@ -67,7 +78,10 @@
   
   //Calls our main method below passing in the the queried string
   [self reposForSearchString:searchBar.text];
+  
+
 }
+
 
 -(void)reposForSearchString:(NSString *)searchString
 {
@@ -131,6 +145,7 @@
 {
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
+//  tableView.separatorColor = [UIColor colorWithRed:0.23 green:<#(CGFloat)#> blue:<#(CGFloat)#> alpha:<#(CGFloat)#>];
   cell.textLabel.text = [self.repoArray[indexPath.row] name];
 
   
@@ -138,11 +153,14 @@
 }
 
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TOWebViewController *wvc = [[TOWebViewController alloc] initWithURLString:[_repoArray[indexPath.row] html_url]];
   
   [self presentViewController:[[UINavigationController alloc] initWithRootViewController:wvc] animated:YES completion:nil];
+  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
   
 }

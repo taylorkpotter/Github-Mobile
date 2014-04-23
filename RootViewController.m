@@ -13,13 +13,16 @@
 #import "AppDelegate.h"
 
 @interface RootViewController () <UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,MenuProtocol>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) SearchViewController *searchViewController;
+@property (weak,nonatomic) IBOutlet UITableView *tableView;
+@property (weak,nonatomic) AppDelegate *appDelegate;
+@property (strong,nonatomic) SearchViewController *searchViewController;
 @property (strong,nonatomic) NSArray *arrayOfViewControllers;
 @property (strong,nonatomic) UIViewController *topViewController;
 @property (strong,nonatomic) UITapGestureRecognizer *tapToClose;
-@property (weak, nonatomic) AppDelegate *appDelegate;
-@property (strong, nonatomic) NetworkController *networkController;
+@property (strong,nonatomic) NetworkController *networkController;
+
+
+
 @property (nonatomic) BOOL menuIsOpen;
 
 @end
@@ -102,8 +105,8 @@
   
   SearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
   searchViewController.title = @"Search";
-  
   searchViewController.delegate = self;
+  
   UINavigationController *searchNav = [[UINavigationController alloc]initWithRootViewController:searchViewController];
   searchNav.navigationBarHidden = YES;
   
@@ -262,6 +265,8 @@
   }
   
 }
+
+
 
 
 

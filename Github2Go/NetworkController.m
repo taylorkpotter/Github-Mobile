@@ -14,15 +14,24 @@
 #define GITHUB_CALLBACK_URI @"gitauth://git_callback"
 #define GITHUB_OAUTH_URL @"https://github.com/login/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@"
 #define GITHUB_API_URL @"https://api.github.com/"
+@interface NetworkController ()
+@property (strong, nonatomic) NSURLSession *url;
 
-
+@end
 @implementation NetworkController
+
+
 
 -(id)init
 {
   self = [super init];
   
+  
   if (self) {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+
+    self.url = [NSURLSession sharedSession];
+    
     [self performSelector:@selector(requestOAuthAccess) withObject:nil afterDelay:.1];
   
   }
@@ -46,34 +55,41 @@
 }
 
 
--(void)retreiveReposForCurrentUser
+-(void)retreiveReposForCurrentUser:(void(^)(NSMutableArray *userRepoArray))completionBlock
 {
   
   NSURL *userRepoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",GITHUB_API_URL,@"user/repos"]];
-  NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-  
-  NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+//  NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//  
+//  NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
   
   NSMutableURLRequest *request = [NSMutableURLRequest new];
   [request setURL:userRepoURL];
   [request setHTTPMethod:@"GET"];
   [request setValue:[NSString stringWithFormat:@"token %@", _userToken] forHTTPHeaderField:@"Authorization"];
   
-  NSURLSessionDataTask *getDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+  NSURLSessionDataTask *getDataTask = [self.url dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     NSLog(@"Response is %@", response.description);
     
     NSMutableArray *tempJSONArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
     NSMutableArray *userRepoArray = [NSMutableArray new];
-      for (NSDictionary *repoDict in tempJSONArray ) {
-        
-        Repo *tempRepo = [Repo new];
-        tempRepo.name = [repoDict objectForKey:@"name"];
-        tempRepo.html_url = [repoDict objectForKey:@"html_url"];
-        
-        [userRepoArray addObject:tempRepo];
-      }
-    [self.delegate pulledRepoArray:userRepoArray];
+
+    [tempJSONArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+      Repo *newRepo = [Repo new];
+      newRepo.name = [obj objectForKey:@"name"];
+      newRepo.html_url = [obj objectForKey:@"html_url"];
+      
+      [userRepoArray addObject:newRepo];
+     
+    }];
+    
+    if ([userRepoArray isKindOfClass:[NSMutableArray class]])
+    {
+      NSLog(@"%@", userRepoArray);
+    }
+    
+    completionBlock(userRepoArray);
 
     }];
   
@@ -90,7 +106,6 @@
 -(void)handleOAuthCallbackWithURL:(NSURL *)url
 {
   
-//  NSLog(@" %@",url);
   NSString *code = [self getCodeFromCallBackURL:url];
   NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@",GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,code];
   NSData *postData = [postString dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];

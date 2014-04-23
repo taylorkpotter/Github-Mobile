@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-@protocol NetworkProtocolDelegate <NSObject>
-
--(void)pulledRepoArray:(NSMutableArray *)userRepos;
-
-
-@end
+//@protocol NetworkProtocolDelegate <NSObject>
+//
+//-(void)pulledRepoArray:(NSMutableArray *)userRepos;
+//
+//
+//@end
 
 @interface NetworkController : NSObject
 @property (strong, nonatomic) NSString *userToken;
-@property (nonatomic,unsafe_unretained) id <NetworkProtocolDelegate> delegate;
+//@property (nonatomic,unsafe_unretained) id <NetworkProtocolDelegate> delegate;
 
 
 
@@ -24,7 +24,7 @@
 
 -(void)handleOAuthCallbackWithURL:(NSURL *)url;
 
--(void)retreiveReposForCurrentUser;
+-(void)retreiveReposForCurrentUser:(void(^)(NSMutableArray *usersRepoArray))completionBlock;
 
 
 @end
