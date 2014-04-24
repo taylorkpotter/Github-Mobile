@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CBD72998588E41EC820477C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF9F46976D244C2A12CB023 /* libPods.a */; };
+		D7070E9D1908632800347A9E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7070E9C1908632800347A9E /* LoginViewController.m */; };
 		D712BB861908174D005BA880 /* avatar_default.png in Resources */ = {isa = PBXBuildFile; fileRef = D712BB851908174D005BA880 /* avatar_default.png */; };
+		D712BBCD19085049005BA880 /* UIView+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = D712BBCC19085049005BA880 /* UIView+Shadow.m */; };
 		D74129121905BEC000198C78 /* icon-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = D74129111905BEC000198C78 /* icon-menu.png */; };
 		D74129151905C38100198C78 /* Repo.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129141905C38100198C78 /* Repo.m */; };
 		D75F01411905B40B00AF297E /* ReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01401905B40B00AF297E /* ReposViewController.m */; };
@@ -48,7 +50,11 @@
 
 /* Begin PBXFileReference section */
 		2FF9F46976D244C2A12CB023 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7070E9B1908632800347A9E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D7070E9C1908632800347A9E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D712BB851908174D005BA880 /* avatar_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar_default.png; path = ../avatar_default.png; sourceTree = "<group>"; };
+		D712BBCB19085049005BA880 /* UIView+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Shadow.h"; path = "../UIView+Shadow.h"; sourceTree = "<group>"; };
+		D712BBCC19085049005BA880 /* UIView+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Shadow.m"; path = "../UIView+Shadow.m"; sourceTree = "<group>"; };
 		D74129111905BEC000198C78 /* icon-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-menu.png"; sourceTree = "<group>"; };
 		D74129131905C38100198C78 /* Repo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repo.h; sourceTree = "<group>"; };
 		D74129141905C38100198C78 /* Repo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repo.m; sourceTree = "<group>"; };
@@ -62,7 +68,7 @@
 		D7654C2B1905D81C0026917A /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		D7654C2C1905D81C0026917A /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		D7ACD6D819072B6D001083A2 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
+		D7ACD6D819072B6D001083A2 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D7ACD6D919072B6D001083A2 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
 		D7AF4ADB1905AD9500715E61 /* Github2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Github2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AF4ADE1905AD9500715E61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -158,6 +164,8 @@
 				D7ACD6D819072B6D001083A2 /* NetworkController.h */,
 				D7ACD6D919072B6D001083A2 /* NetworkController.m */,
 				D7AF4B131905AE3800715E61 /* RootViewController.h */,
+				D7070E9B1908632800347A9E /* LoginViewController.h */,
+				D7070E9C1908632800347A9E /* LoginViewController.m */,
 				D7AF4B141905AE3800715E61 /* RootViewController.m */,
 				D75F01491905B50300AF297E /* MenuProtocol.h */,
 				D7AF4AF01905AD9500715E61 /* Main.storyboard */,
@@ -182,6 +190,8 @@
 		D7AF4AE51905AD9500715E61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D712BBCB19085049005BA880 /* UIView+Shadow.h */,
+				D712BBCC19085049005BA880 /* UIView+Shadow.m */,
 				D712BB851908174D005BA880 /* avatar_default.png */,
 				D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */,
 				D74129111905BEC000198C78 /* icon-menu.png */,
@@ -348,12 +358,14 @@
 			files = (
 				D74129151905C38100198C78 /* Repo.m in Sources */,
 				D75F01411905B40B00AF297E /* ReposViewController.m in Sources */,
+				D712BBCD19085049005BA880 /* UIView+Shadow.m in Sources */,
 				D75F01441905B41100AF297E /* UsersViewController.m in Sources */,
 				D7654C2D1905D81C0026917A /* WebViewController.m in Sources */,
 				D7AF4AEF1905AD9500715E61 /* AppDelegate.m in Sources */,
 				D7AF4AEB1905AD9500715E61 /* main.m in Sources */,
 				D75F01471905B41A00AF297E /* SearchViewController.m in Sources */,
 				D7ACD6DA19072B6D001083A2 /* NetworkController.m in Sources */,
+				D7070E9D1908632800347A9E /* LoginViewController.m in Sources */,
 				D7AF4B151905AE3800715E61 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

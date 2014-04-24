@@ -7,23 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-//@protocol NetworkProtocolDelegate <NSObject>
-//
-//-(void)pulledRepoArray:(NSMutableArray *)userRepos;
-//
-//
-//@end
+
 
 @interface NetworkController : NSObject
+
+/* string that will hold the Auth token */
 @property (strong, nonatomic) NSString *userToken;
-//@property (nonatomic,unsafe_unretained) id <NetworkProtocolDelegate> delegate;
 
+/* method to request OAuth access with completion block */
+-(void)requestOAuthAccess:(void(^)())completionOfOAuthAccess;
 
-
--(void)requestOAuthAccess;
-
+/* method to handle OAuth response */
 -(void)handleOAuthCallbackWithURL:(NSURL *)url;
 
+/* Returns whether user has authorization token */
+-(BOOL)checkForAuthorizationToken;
+
+/* Retreives repositories for current user with completion */
 -(void)retreiveReposForCurrentUser:(void(^)(NSMutableArray *usersRepoArray))completionBlock;
 
 

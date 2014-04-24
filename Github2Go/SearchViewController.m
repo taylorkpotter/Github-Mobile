@@ -16,32 +16,25 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *textToSearch;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UILabel *searchViewTitle;
+@property (weak, nonatomic) IBOutlet UILabel *searchViewTitle;
 
 @property (weak, nonatomic) AppDelegate       *appDelegate;
 @property (weak, nonatomic) NetworkController *networkController;
 @property (strong, nonatomic) NSMutableArray  *repoArray;
 
 
+
 @end
 
 @implementation SearchViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
       self.appDelegate = [UIApplication sharedApplication].delegate;
       self.networkController = self.appDelegate.networkController;
-  
+
   
 }
 
@@ -56,7 +49,10 @@
   
     //Instantiates our repoArray which will hold our search results
     _repoArray = [NSMutableArray new];
+  
     _searchViewTitle.text = @"s e a r c h";
+    _tableView.separatorColor = [UIColor colorWithRed:0.11 green:0.35 blue:0.4 alpha:1];
+
   
   
 }
@@ -68,20 +64,17 @@
   
 }
 
-
-
 #pragma mark - UISearchBarDelegate
 
 //As a delegate of UISearchBar we can perform this method to obtain the queried string
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-  
-  //Calls our main method below passing in the the queried string
-  [self reposForSearchString:searchBar.text];
-  
 
+  [self reposForSearchString:searchBar.text];
 }
 
+
+#pragma mark - Search for Repositories
 
 -(void)reposForSearchString:(NSString *)searchString
 {
@@ -130,7 +123,6 @@
   
 }
 
-
 #pragma mark - UITableView DataSource
 
 //Amount of rows in section based on the count of the arrayOfViewControllers
@@ -145,7 +137,6 @@
 {
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
-//  tableView.separatorColor = [UIColor colorWithRed:0.23 green:<#(CGFloat)#> blue:<#(CGFloat)#> alpha:<#(CGFloat)#>];
   cell.textLabel.text = [self.repoArray[indexPath.row] name];
 
   

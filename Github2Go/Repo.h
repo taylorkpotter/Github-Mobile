@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSString * html_url;
 @property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * login;
+@property (nonatomic, strong) NSURL * avatar_url;
 
 
 @end

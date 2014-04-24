@@ -21,30 +21,18 @@
 @property (strong,nonatomic) UITapGestureRecognizer *tapToClose;
 @property (strong,nonatomic) NetworkController *networkController;
 
-
-
 @property (nonatomic) BOOL menuIsOpen;
 
 @end
 
 @implementation RootViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.appDelegate = [UIApplication sharedApplication].delegate;
-    self.networkController = self.appDelegate.networkController;
-    //self.networkController performSelector:@selector(requestOAuthAccess) withObject:nil afterDelay:.1];
-  
+    self.networkController = self.appDelegate.networkController;  
   
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -52,7 +40,6 @@
     
     [self setupChildViewControllers];
     [self setupDragRecognizer];
-//    self.searchViewController = [SearchViewController new];
     self.tapToClose = [UITapGestureRecognizer new];
   
 
