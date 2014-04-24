@@ -10,4 +10,16 @@
 
 @implementation Repo
 
+-(instancetype)initWithJSONDictionary:(NSDictionary *)dictionary
+
+{
+  self = [self init];
+  
+  self.repoURL = [dictionary objectForKey:@"html_url"];
+  self.repoName = [dictionary objectForKey:@"name"];
+
+  
+  return self;
+}
+
 @end

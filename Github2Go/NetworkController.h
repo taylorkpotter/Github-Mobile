@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
+
 @interface NetworkController : NSObject
 
 /* string that will hold the Auth token */
@@ -24,7 +25,7 @@
 -(BOOL)checkForAuthorizationToken;
 
 /* Retreives repositories for current user with completion */
--(void)retreiveReposForCurrentUser:(void(^)(NSMutableArray *usersRepoArray))completionBlock;
+-(void)retreiveReposForCurrentUserWithCompletion:(void(^)(NSMutableArray *usersRepoArray))completionBlock;
 
 
 @end

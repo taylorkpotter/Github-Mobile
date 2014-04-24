@@ -8,12 +8,14 @@
 
 #import "NetworkController.h"
 #import "Repo.h"
+#import "User.h"
 
 #define GITHUB_CLIENT_ID @"3eef0a5d2be10c96e5c2"
 #define GITHUB_CLIENT_SECRET @"fb7910675e0b05ad4ac41b1478c7d402b666e653"
 #define GITHUB_CALLBACK_URI @"gitauth://git_callback"
 #define GITHUB_OAUTH_URL @"https://github.com/login/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@"
 #define GITHUB_API_URL @"https://api.github.com/"
+
 
 @interface NetworkController ()
 
@@ -60,7 +62,7 @@
 }
 
 
--(void)retreiveReposForCurrentUser:(void(^)(NSMutableArray *userRepoArray))completionBlock
+-(void)retreiveReposForCurrentUserWithCompletion:(void(^)(NSMutableArray *userRepoArray))completionBlock
 {
   NSURL *userRepoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",GITHUB_API_URL,@"user/repos?sort=updated&order=desc"]];
   
@@ -78,8 +80,8 @@
 
     [tempJSONArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
       Repo *newRepo = [Repo new];
-      newRepo.name = [obj objectForKey:@"name"];
-      newRepo.html_url = [obj objectForKey:@"html_url"];
+      newRepo.repoName = [obj objectForKey:@"name"];
+      newRepo.repoURL = [obj objectForKey:@"html_url"];
       
       [userRepoArray addObject:newRepo];
      
@@ -146,8 +148,9 @@
       self.completionOfOAuthAccess();
     
     });
-    
+                                                    
   }];
+  
   
   [postDataTask resume];
 }
@@ -183,14 +186,19 @@
 
 -(BOOL)checkForAuthorizationToken
 {
-  NSLog(@"%@", self.userToken);
   
-  if (self.userToken) {
+  if (self.userToken)
+  {
     return YES;
+  
   } else {
-    NSLog(@"You need to get a token first!");
+    
+      NSLog(@"You need to get a token first!");
+    
     return NO;
   }
 }
+
+
 
 @end

@@ -10,10 +10,9 @@
 
 @interface Repo : NSObject
 
-@property (nonatomic, strong) NSString * html_url;
-@property (nonatomic, strong) NSString * name;
-@property (nonatomic, strong) NSString * login;
-@property (nonatomic, strong) NSURL * avatar_url;
+@property (nonatomic, strong) NSString *repoURL, *repoName;
+
+-(instancetype)initWithJSONDictionary:(NSDictionary *)dictionary;
 
 
 @end

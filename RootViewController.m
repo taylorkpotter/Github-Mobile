@@ -13,7 +13,9 @@
 #import "AppDelegate.h"
 
 @interface RootViewController () <UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,MenuProtocol>
+
 @property (weak,nonatomic) IBOutlet UITableView *tableView;
+
 @property (weak,nonatomic) AppDelegate *appDelegate;
 @property (strong,nonatomic) SearchViewController *searchViewController;
 @property (strong,nonatomic) NSArray *arrayOfViewControllers;
@@ -27,6 +29,7 @@
 
 @implementation RootViewController
 
+#pragma mark - View Did Load
 
 - (void)viewDidLoad
 {
@@ -45,14 +48,7 @@
 
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-
 #pragma mark - Table View Methods
-
 
 //Amount of rows in section based on the count of the arrayOfViewControllers
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -64,12 +60,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   tableView.separatorColor = [UIColor clearColor];
+  
   tableView.backgroundColor = [UIColor colorWithRed:0.79 green:0.79 blue:0.81 alpha:1.00];
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+  
   cell.backgroundColor = [UIColor clearColor];
+  
   cell.textLabel.text = [self.arrayOfViewControllers[indexPath.row] title];
-//  cell.textLabel.backgroundColor = [UIColor <someColorHere>];
+
   return cell;
 }
 
@@ -96,7 +95,6 @@
   
   UINavigationController *searchNav = [[UINavigationController alloc]initWithRootViewController:searchViewController];
   searchNav.navigationBarHidden = YES;
-  
   
   
   self.arrayOfViewControllers = @[repoViewController,usersViewController,searchNav];

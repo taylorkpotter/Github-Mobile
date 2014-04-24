@@ -9,8 +9,11 @@
 #import "ReposViewController.h"
 #import "NetworkController.h"
 #import "AppDelegate.h"
+#import "Repo.h"
 
 @interface ReposViewController () <UITableViewDelegate, UITableViewDataSource>
+
+#pragma - Properties
 
 @property (strong, nonatomic) NSMutableArray *usersRepoArray;
 @property (weak, nonatomic) NetworkController *networkController;
@@ -21,6 +24,8 @@
 
 @implementation ReposViewController
 
+#pragma mark - View Did Load
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -30,31 +35,37 @@
       self.networkController = self.appDelegate.networkController;
 }
 
+#pragma mark - View Did Appear
+
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
- 
-  [self.networkController retreiveReposForCurrentUser:^(NSMutableArray *repo) {
-    self.usersRepoArray = repo;
+  
+    /* Sends the message to retreive Repos for current authorized users */
+    [self.networkController retreiveReposForCurrentUserWithCompletion:^(NSMutableArray *repo) {
+      
+      self.usersRepoArray = repo;
     
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      [self.tableView reloadData];
+      /* Reloading table on main thread using GCD */
+      dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.tableView reloadData];
+      
+      });
     }];
-  }];
-
 }
 
-
+/* Seek to understand what how exactly this block of code works */
 -(void)pulledRepoArray:(NSMutableArray *)userRepos
 
 {
   self.usersRepoArray = userRepos;
   
-  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    [self pulledRepoArray:userRepos];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      
+      [self pulledRepoArray:userRepos];
 
-  }];
-  
+    });
 }
 
 #pragma mark - UITableView Methods
@@ -74,9 +85,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"repoCell" forIndexPath:indexPath];
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
-  cell.textLabel.text = [self.usersRepoArray[indexPath.row] name];
+  cell.textLabel.text = [self.usersRepoArray[indexPath.row] repoName];
   
   return cell;
 }
