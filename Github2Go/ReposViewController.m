@@ -19,6 +19,7 @@
 @property (weak, nonatomic) NetworkController *networkController;
 @property (weak, nonatomic) AppDelegate *appDelegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *userAvatar;
 
 @end
 

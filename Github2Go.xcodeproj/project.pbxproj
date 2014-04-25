@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		CBD72998588E41EC820477C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF9F46976D244C2A12CB023 /* libPods.a */; };
 		D7070E9D1908632800347A9E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7070E9C1908632800347A9E /* LoginViewController.m */; };
-		D712BB861908174D005BA880 /* avatar_default.png in Resources */ = {isa = PBXBuildFile; fileRef = D712BB851908174D005BA880 /* avatar_default.png */; };
-		D712BBCD19085049005BA880 /* UIView+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = D712BBCC19085049005BA880 /* UIView+Shadow.m */; };
+		D7099CEE190A5D7D00DE6329 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7099CED190A5D7D00DE6329 /* RootViewController.m */; };
 		D725AD2E1909AFFD00B8D073 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D725AD2D1909AFFD00B8D073 /* User.m */; };
+		D733D270190A3B1400997F32 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = D733D26F190A3B1400997F32 /* Constants.m */; };
 		D74129121905BEC000198C78 /* icon-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = D74129111905BEC000198C78 /* icon-menu.png */; };
 		D74129151905C38100198C78 /* Repo.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129141905C38100198C78 /* Repo.m */; };
 		D75F01411905B40B00AF297E /* ReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01401905B40B00AF297E /* ReposViewController.m */; };
 		D75F01441905B41100AF297E /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01431905B41100AF297E /* UsersViewController.m */; };
 		D75F01471905B41A00AF297E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F01461905B41A00AF297E /* SearchViewController.m */; };
+		D762DE9E190A5DAF00EB8B82 /* avatar_default.png in Resources */ = {isa = PBXBuildFile; fileRef = D762DE9D190A5DAF00EB8B82 /* avatar_default.png */; };
 		D780E18F1907BFA200F7FB49 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */; };
 		D7ACD6DA19072B6D001083A2 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ACD6D919072B6D001083A2 /* NetworkController.m */; };
 		D7AF4ADF1905AD9500715E61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF4ADE1905AD9500715E61 /* Foundation.framework */; };
@@ -32,7 +33,6 @@
 		D7AF4B001905AD9500715E61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF4AE21905AD9500715E61 /* UIKit.framework */; };
 		D7AF4B081905AD9500715E61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7AF4B061905AD9500715E61 /* InfoPlist.strings */; };
 		D7AF4B0A1905AD9500715E61 /* Github2GoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF4B091905AD9500715E61 /* Github2GoTests.m */; };
-		D7AF4B151905AE3800715E61 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF4B141905AE3800715E61 /* RootViewController.m */; };
 		D7F8552719071D2D00B6DC98 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F8552619071D2D00B6DC98 /* Twitter.framework */; };
 		D7F8552919071D3700B6DC98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F8552819071D3700B6DC98 /* MessageUI.framework */; };
 		D7F8552B19071D3D00B6DC98 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F8552A19071D3D00B6DC98 /* QuartzCore.framework */; };
@@ -52,11 +52,12 @@
 		2FF9F46976D244C2A12CB023 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7070E9B1908632800347A9E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D7070E9C1908632800347A9E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		D712BB851908174D005BA880 /* avatar_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar_default.png; path = ../avatar_default.png; sourceTree = "<group>"; };
-		D712BBCB19085049005BA880 /* UIView+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Shadow.h"; path = "../UIView+Shadow.h"; sourceTree = "<group>"; };
-		D712BBCC19085049005BA880 /* UIView+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Shadow.m"; path = "../UIView+Shadow.m"; sourceTree = "<group>"; };
+		D7099CEC190A5D7D00DE6329 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		D7099CED190A5D7D00DE6329 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D725AD2C1909AFFD00B8D073 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		D725AD2D1909AFFD00B8D073 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		D733D26E190A3B1400997F32 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		D733D26F190A3B1400997F32 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		D74129111905BEC000198C78 /* icon-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-menu.png"; sourceTree = "<group>"; };
 		D74129131905C38100198C78 /* Repo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repo.h; sourceTree = "<group>"; };
 		D74129141905C38100198C78 /* Repo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repo.m; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		D75F01451905B41A00AF297E /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		D75F01461905B41A00AF297E /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		D75F01491905B50300AF297E /* MenuProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuProtocol.h; sourceTree = "<group>"; };
+		D762DE9D190A5DAF00EB8B82 /* avatar_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar_default.png; sourceTree = "<group>"; };
 		D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		D7ACD6D819072B6D001083A2 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D7ACD6D919072B6D001083A2 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
@@ -87,8 +89,6 @@
 		D7AF4B051905AD9500715E61 /* Github2GoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Github2GoTests-Info.plist"; sourceTree = "<group>"; };
 		D7AF4B071905AD9500715E61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7AF4B091905AD9500715E61 /* Github2GoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Github2GoTests.m; sourceTree = "<group>"; };
-		D7AF4B131905AE3800715E61 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../RootViewController.h; sourceTree = "<group>"; };
-		D7AF4B141905AE3800715E61 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../RootViewController.m; sourceTree = "<group>"; };
 		D7F8552619071D2D00B6DC98 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D7F8552819071D3700B6DC98 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D7F8552A19071D3D00B6DC98 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -161,12 +161,12 @@
 		D7AF4AE41905AD9500715E61 /* Github2Go */ = {
 			isa = PBXGroup;
 			children = (
+				D7099CEC190A5D7D00DE6329 /* RootViewController.h */,
+				D7099CED190A5D7D00DE6329 /* RootViewController.m */,
 				D7ACD6D819072B6D001083A2 /* NetworkController.h */,
 				D7ACD6D919072B6D001083A2 /* NetworkController.m */,
-				D7AF4B131905AE3800715E61 /* RootViewController.h */,
 				D7070E9B1908632800347A9E /* LoginViewController.h */,
 				D7070E9C1908632800347A9E /* LoginViewController.m */,
-				D7AF4B141905AE3800715E61 /* RootViewController.m */,
 				D75F01491905B50300AF297E /* MenuProtocol.h */,
 				D7AF4AF01905AD9500715E61 /* Main.storyboard */,
 				D7AF4AED1905AD9500715E61 /* AppDelegate.h */,
@@ -178,6 +178,8 @@
 				D725AD2C1909AFFD00B8D073 /* User.h */,
 				D725AD2D1909AFFD00B8D073 /* User.m */,
 				D74129131905C38100198C78 /* Repo.h */,
+				D733D26E190A3B1400997F32 /* Constants.h */,
+				D733D26F190A3B1400997F32 /* Constants.m */,
 				D74129141905C38100198C78 /* Repo.m */,
 				D75F013F1905B40B00AF297E /* ReposViewController.h */,
 				D75F01401905B40B00AF297E /* ReposViewController.m */,
@@ -190,9 +192,7 @@
 		D7AF4AE51905AD9500715E61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D712BBCB19085049005BA880 /* UIView+Shadow.h */,
-				D712BBCC19085049005BA880 /* UIView+Shadow.m */,
-				D712BB851908174D005BA880 /* avatar_default.png */,
+				D762DE9D190A5DAF00EB8B82 /* avatar_default.png */,
 				D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */,
 				D74129111905BEC000198C78 /* icon-menu.png */,
 				D7AF4AE61905AD9500715E61 /* Github2Go-Info.plist */,
@@ -301,10 +301,10 @@
 			files = (
 				D7AF4AF71905AD9500715E61 /* Images.xcassets in Resources */,
 				D7AF4AE91905AD9500715E61 /* InfoPlist.strings in Resources */,
+				D762DE9E190A5DAF00EB8B82 /* avatar_default.png in Resources */,
 				D7AF4AF21905AD9500715E61 /* Main.storyboard in Resources */,
 				D780E18F1907BFA200F7FB49 /* Icon-Small@2x.png in Resources */,
 				D74129121905BEC000198C78 /* icon-menu.png in Resources */,
-				D712BB861908174D005BA880 /* avatar_default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +358,7 @@
 			files = (
 				D74129151905C38100198C78 /* Repo.m in Sources */,
 				D75F01411905B40B00AF297E /* ReposViewController.m in Sources */,
-				D712BBCD19085049005BA880 /* UIView+Shadow.m in Sources */,
+				D7099CEE190A5D7D00DE6329 /* RootViewController.m in Sources */,
 				D75F01441905B41100AF297E /* UsersViewController.m in Sources */,
 				D7AF4AEF1905AD9500715E61 /* AppDelegate.m in Sources */,
 				D7AF4AEB1905AD9500715E61 /* main.m in Sources */,
@@ -366,7 +366,7 @@
 				D75F01471905B41A00AF297E /* SearchViewController.m in Sources */,
 				D7ACD6DA19072B6D001083A2 /* NetworkController.m in Sources */,
 				D7070E9D1908632800347A9E /* LoginViewController.m in Sources */,
-				D7AF4B151905AE3800715E61 /* RootViewController.m in Sources */,
+				D733D270190A3B1400997F32 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

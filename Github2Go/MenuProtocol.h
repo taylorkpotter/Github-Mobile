@@ -10,7 +10,6 @@
 
 @protocol MenuProtocol <NSObject>
 
-
 -(void)menuPressed;
 
 @end

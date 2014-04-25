@@ -17,4 +17,6 @@
 
 -(instancetype)initWithJSONDictionary:(NSDictionary *)dictionary;
 
+
+
 @end

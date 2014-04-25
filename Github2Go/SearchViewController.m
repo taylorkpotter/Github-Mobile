@@ -13,9 +13,6 @@
 #import "Repo.h"
 #import "User.h"
 
-#define GITHUB_API_URL @"https://api.github.com/"
-
-
 @interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *searchViewTitle;
@@ -68,6 +65,7 @@
 
 #pragma mark - UISearchBarDelegate
 
+
 //As a delegate of UISearchBar we can perform this method to obtain the queried string
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -77,6 +75,7 @@
   
   if (searchBar.selectedScopeButtonIndex) {
     self.identifier = @"searchUsers";
+    
     [self reposForSearchString:[NSString stringWithFormat:@"search/users?q=%@", searchBar.text]];
  
   } else {
@@ -86,6 +85,19 @@
   [self.tableView reloadData];
 }
 
+-(void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
+{
+  if ([_identifier isEqualToString:@"searchRepos"]) {
+    selectedScope = 0;
+  } else {
+    selectedScope = 1;
+  }
+
+  [self.searchResults removeAllObjects];
+  [self.tableView reloadData];
+  searchBar.text = nil;
+  
+}
 
 
 #pragma mark - Search for Repositories
@@ -94,7 +106,7 @@
 {
   //Handles a search with multiple words by adding +'s where spaces occur
   searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-  NSLog(@" This is the passed in text %@", searchString);
+  
   
   //Does a Github API call returning repositories descending by most stars
   NSURL *jsonURLForRepos = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",GITHUB_API_URL,searchString]];

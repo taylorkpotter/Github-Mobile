@@ -8,14 +8,6 @@
 
 #import "NetworkController.h"
 #import "Repo.h"
-#import "User.h"
-
-#define GITHUB_CLIENT_ID @"3eef0a5d2be10c96e5c2"
-#define GITHUB_CLIENT_SECRET @"fb7910675e0b05ad4ac41b1478c7d402b666e653"
-#define GITHUB_CALLBACK_URI @"gitauth://git_callback"
-#define GITHUB_OAUTH_URL @"https://github.com/login/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@"
-#define GITHUB_API_URL @"https://api.github.com/"
-
 
 @interface NetworkController ()
 
@@ -112,47 +104,30 @@
 {
   
   NSString *code = [self getCodeFromCallBackURL:url];
-  NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@",GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,code];
-  NSData *postData = [postString dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-  NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
   
+  NSString *postString = [NSString stringWithFormat:@"https://github.com/login/oauth/access_token?client_id=%@&client_secret=%@&code=%@", GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, code];
+
   NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
   NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
-  NSMutableURLRequest *request = [NSMutableURLRequest new];
-  [request setURL:[NSURL URLWithString:@"https://github.com/login/oauth/access_token"]];
-  [request setHTTPMethod:@"POST"];
-  [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-  [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-  [request setHTTPBody:postData];
   
-  NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request
-                                                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    
-    if (error)
-    {
-      NSLog(@"error: %@", error.description);
-    }
-    
-    NSLog(@" %@",response.description);
-    
-    //Saves the users special token to User Defaults
-    self.userToken = [self convertResponseDataIntoToken:data];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:self.userToken
-                                             forKey:@"userToken"];
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-    
-      self.completionOfOAuthAccess();
-    
-    });
-                                                    
-  }];
-  
-  
-  [postDataTask resume];
+  [[session dataTaskWithURL:[NSURL URLWithString:postString]
+         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+           
+           if (!error) {
+             
+             self.userToken = [self convertResponseDataIntoToken:data];
+             [[NSUserDefaults standardUserDefaults]setObject:self.userToken forKey:@"userToken"];
+             [[NSUserDefaults standardUserDefaults]synchronize];
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+               self.completionOfOAuthAccess();
+             });
+             
+           } else {
+             NSLog(@"%@", error.description);
+           }
+           
+         }]resume];
 }
 
 #pragma mark - Returns code from callBackURL

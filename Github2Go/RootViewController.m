@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 potter.io. All rights reserved.
 //
 #import <QuartzCore/CALayer.h>
+
 #import "RootViewController.h"
 #import "ReposViewController.h"
 #import "UsersViewController.h"
@@ -22,31 +23,44 @@
 @property (strong,nonatomic) UIViewController *topViewController;
 @property (strong,nonatomic) UITapGestureRecognizer *tapToClose;
 @property (strong,nonatomic) NetworkController *networkController;
-
 @property (nonatomic) BOOL menuIsOpen;
 
 @end
 
 @implementation RootViewController
 
-#pragma mark - View Did Load
+#pragma mark - viewDidLoad
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.appDelegate = [UIApplication sharedApplication].delegate;
-    self.networkController = self.appDelegate.networkController;  
   
+    /* Delegate Setup */
+    self.appDelegate = [UIApplication sharedApplication].delegate;
+    self.networkController = self.appDelegate.networkController;
+    self.
+  
+    /* TableView Setup */
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.userInteractionEnabled = NO;
-    
+  
+    /* View Setup */
     [self setupChildViewControllers];
     [self setupDragRecognizer];
+  
+    /* Gesture Setup */
     self.tapToClose = [UITapGestureRecognizer new];
   
-
+    /* Top Level Shadow */
+  
+    self.topViewController.view.layer.shadowOffset = CGSizeMake(1, 1);
+    self.topViewController.view.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.topViewController.view.layer.shadowRadius = 20.0f;
+    self.topViewController.view.layer.shadowOpacity = 0.95f;
+  
 }
+
 
 #pragma mark - Table View Methods
 
@@ -59,15 +73,15 @@
 //This sets up the prototype cell and gives it the name of the given object in the array
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  tableView.separatorColor = [UIColor clearColor];
-  
-  tableView.backgroundColor = [UIColor colorWithRed:0.79 green:0.79 blue:0.81 alpha:1.00];
-  
+
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
-  cell.backgroundColor = [UIColor clearColor];
+    tableView.separatorColor = [UIColor colorWithWhite:1.000 alpha:0.300];
+    tableView.backgroundColor = [UIColor colorWithRed:0.049 green:0.208 blue:0.243 alpha:0.370];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
   
-  cell.textLabel.text = [self.arrayOfViewControllers[indexPath.row] title];
+    cell.textLabel.text = [self.arrayOfViewControllers[indexPath.row] title];
 
   return cell;
 }
@@ -81,23 +95,31 @@
 
 -(void)setupChildViewControllers
 {
+  
   ReposViewController *repoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"repos"];
   repoViewController.title = @"Repo";
-  repoViewController.delegate = self;
-  
+
   UsersViewController *usersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"users"];
   usersViewController.title = @"Users";
-  usersViewController.delegate = self;
-  
+
   SearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
   searchViewController.title = @"Search";
-  searchViewController.delegate = self;
+  
+  self.arrayOfViewControllers = @[repoViewController,usersViewController,searchViewController];
+
+  for (ReposViewController *repoViewController in _arrayOfViewControllers) {
+    repoViewController.view.layer.shadowOffset = CGSizeMake(1, 1);
+    repoViewController.view.layer.shadowColor = [[UIColor blackColor] CGColor];
+    repoViewController.view.layer.shadowRadius = 20.0f;
+    repoViewController.view.layer.shadowOpacity = 0.8f;
+    repoViewController.delegate = self;
+  }
+  
   
   UINavigationController *searchNav = [[UINavigationController alloc]initWithRootViewController:searchViewController];
   searchNav.navigationBarHidden = YES;
-  
-  
   self.arrayOfViewControllers = @[repoViewController,usersViewController,searchNav];
+
   
   self.topViewController = self.arrayOfViewControllers[2];
   
@@ -250,6 +272,8 @@
   }
   
 }
+
+
 
 
 
