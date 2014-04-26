@@ -22,6 +22,9 @@
 		D76BC2F8190B0A2900954F15 /* searchWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = D76BC2F7190B0A2900954F15 /* searchWhite.png */; };
 		D76BC2FA190B167600954F15 /* SearchResultDefaultLinen.png in Resources */ = {isa = PBXBuildFile; fileRef = D76BC2F9190B167600954F15 /* SearchResultDefaultLinen.png */; };
 		D76BC2FD190B236400954F15 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = D76BC2FC190B236400954F15 /* search.png */; };
+		D77B4A0F190BA7DF00163BA5 /* orangemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B4A0C190BA7DF00163BA5 /* orangemenu.png */; };
+		D77B4A10190BA7DF00163BA5 /* greenbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B4A0D190BA7DF00163BA5 /* greenbutton.png */; };
+		D77B4A11190BA7DF00163BA5 /* pinkbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B4A0E190BA7DF00163BA5 /* pinkbutton.png */; };
 		D780E18F1907BFA200F7FB49 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */; };
 		D7ACD6DA19072B6D001083A2 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ACD6D919072B6D001083A2 /* NetworkController.m */; };
 		D7AF4ADF1905AD9500715E61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF4ADE1905AD9500715E61 /* Foundation.framework */; };
@@ -78,6 +81,9 @@
 		D76BC2F7190B0A2900954F15 /* searchWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchWhite.png; sourceTree = "<group>"; };
 		D76BC2F9190B167600954F15 /* SearchResultDefaultLinen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SearchResultDefaultLinen.png; sourceTree = "<group>"; };
 		D76BC2FC190B236400954F15 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		D77B4A0C190BA7DF00163BA5 /* orangemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangemenu.png; sourceTree = "<group>"; };
+		D77B4A0D190BA7DF00163BA5 /* greenbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenbutton.png; sourceTree = "<group>"; };
+		D77B4A0E190BA7DF00163BA5 /* pinkbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinkbutton.png; sourceTree = "<group>"; };
 		D780E18E1907BFA200F7FB49 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		D7ACD6D819072B6D001083A2 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D7ACD6D919072B6D001083A2 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
@@ -162,9 +168,9 @@
 		D76BC2EE190AC5C500954F15 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				D7099CED190A5D7D00DE6329 /* RootViewController.m */,
 				D76BC2F4190AFA9300954F15 /* networking */,
 				D7099CEC190A5D7D00DE6329 /* RootViewController.h */,
-				D7099CED190A5D7D00DE6329 /* RootViewController.m */,
 				D75F01451905B41A00AF297E /* SearchViewController.h */,
 				D75F01461905B41A00AF297E /* SearchViewController.m */,
 				D75F01421905B41100AF297E /* UsersViewController.h */,
@@ -189,6 +195,9 @@
 		D76BC2FB190B167D00954F15 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D77B4A0C190BA7DF00163BA5 /* orangemenu.png */,
+				D77B4A0D190BA7DF00163BA5 /* greenbutton.png */,
+				D77B4A0E190BA7DF00163BA5 /* pinkbutton.png */,
 				D76BC2FC190B236400954F15 /* search.png */,
 				D76BC2F9190B167600954F15 /* SearchResultDefaultLinen.png */,
 				D76BC2F7190B0A2900954F15 /* searchWhite.png */,
@@ -356,10 +365,13 @@
 				D7AF4AF71905AD9500715E61 /* Images.xcassets in Resources */,
 				D76BC2FD190B236400954F15 /* search.png in Resources */,
 				D7AF4AE91905AD9500715E61 /* InfoPlist.strings in Resources */,
+				D77B4A11190BA7DF00163BA5 /* pinkbutton.png in Resources */,
 				D762DE9E190A5DAF00EB8B82 /* avatar_default.png in Resources */,
+				D77B4A0F190BA7DF00163BA5 /* orangemenu.png in Resources */,
 				D76BC2F8190B0A2900954F15 /* searchWhite.png in Resources */,
 				D7AF4AF21905AD9500715E61 /* Main.storyboard in Resources */,
 				D780E18F1907BFA200F7FB49 /* Icon-Small@2x.png in Resources */,
+				D77B4A10190BA7DF00163BA5 /* greenbutton.png in Resources */,
 				D74129121905BEC000198C78 /* icon-menu.png in Resources */,
 				D76BC2FA190B167600954F15 /* SearchResultDefaultLinen.png in Resources */,
 			);

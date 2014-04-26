@@ -185,8 +185,22 @@
   
 }
 
-
-#pragma mark - UITableView
+//
+//#pragma mark - UITableView
+//
+//-(void)performAnimationOnSearchControllerView
+//{
+//  [UIView animateWithDuration:0.4f animations:^{
+//    [self.view setAlpha:0.0f];
+//    
+//  } completion:^(BOOL finished) {
+////    self.view =
+//    [UIView animateWithDuration:0.4f animations:^{
+//      [self.historyButtonLabel setAlpha:1.0f];
+//    } completion:nil];
+//    
+//  }];
+//}
 
 //Amount of rows in section based on the count of the arrayOfViewControllers
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -195,6 +209,7 @@
 
     if(self.searchResults.count == 0)
     {
+  
       tableView.scrollEnabled = NO;
       tableView.separatorColor = [UIColor clearColor];
       [self.view addSubview:self.imageView];
@@ -238,6 +253,18 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
   
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  
+  if ( [self.searchBarAndScope isFirstResponder]) {
+    [self.searchBarAndScope resignFirstResponder];
+    
+  }
+}
+
+
+
+
 @end
 
 

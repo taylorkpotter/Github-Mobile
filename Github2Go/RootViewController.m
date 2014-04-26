@@ -108,8 +108,8 @@
 
   for (ReposViewController *repoViewController in _arrayOfViewControllers) {
     repoViewController.view.layer.shadowOffset = CGSizeMake(1, 1);
-    repoViewController.view.layer.shadowColor = [[UIColor blackColor] CGColor];
-    repoViewController.view.layer.shadowRadius = 20.0f;
+    repoViewController.view.layer.shadowColor = [[UIColor colorWithWhite:0.000 alpha:0.75] CGColor];
+    repoViewController.view.layer.shadowRadius = 14.0f;
     repoViewController.view.layer.shadowOpacity = 0.8f;
     repoViewController.delegate = self;
   }
@@ -240,6 +240,7 @@
     if (translatedPoint.x > 0){
       self.topViewController.view.center = CGPointMake(self.topViewController.view.center.x + translatedPoint.x, self.topViewController.view.center.y);
       
+      
       [pan setTranslation:CGPointZero inView:self.view];
     }
     
@@ -257,6 +258,7 @@
       [UIView animateWithDuration:.4 animations:^{
         self.topViewController.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
         
+        
       } completion:^(BOOL finished) {
         if (finished)
         {
@@ -272,6 +274,10 @@
   }
   
 }
+
+
+
+
 
 
 
