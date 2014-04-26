@@ -10,8 +10,7 @@
 
 @interface User : NSObject
 
-@property (strong, nonatomic) NSString *avatarURL, *followers, *userName, *userID;
-
+@property (strong, nonatomic) NSString *avatarURL, *followers, *userName, *userID, *repoName;
 @property (strong, nonatomic) UIImage *avatarImage;
 
 

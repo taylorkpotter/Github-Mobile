@@ -53,27 +53,23 @@
     self.tapToClose = [UITapGestureRecognizer new];
   
     /* Top Level Shadow */
-  
     self.topViewController.view.layer.shadowOffset = CGSizeMake(1, 1);
     self.topViewController.view.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.topViewController.view.layer.shadowRadius = 20.0f;
     self.topViewController.view.layer.shadowOpacity = 0.95f;
-  
+
 }
 
 
 #pragma mark - Table View Methods
 
-//Amount of rows in section based on the count of the arrayOfViewControllers
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return self.arrayOfViewControllers.count;
 }
 
-//This sets up the prototype cell and gives it the name of the given object in the array
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
     tableView.separatorColor = [UIColor colorWithWhite:1.000 alpha:0.300];
@@ -91,7 +87,10 @@
 {
   
   [self switchToViewControllerAtIndexPath:(indexPath)];
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+#pragma mark - Setup Child View Controllers
 
 -(void)setupChildViewControllers
 {
@@ -114,12 +113,12 @@
     repoViewController.view.layer.shadowOpacity = 0.8f;
     repoViewController.delegate = self;
   }
-  
+
   
   UINavigationController *searchNav = [[UINavigationController alloc]initWithRootViewController:searchViewController];
   searchNav.navigationBarHidden = YES;
+  
   self.arrayOfViewControllers = @[repoViewController,usersViewController,searchNav];
-
   
   self.topViewController = self.arrayOfViewControllers[2];
   
@@ -148,6 +147,7 @@
   }
   else
   {
+    [self resignFirstResponder];
     [self openMenu];
   }
 }

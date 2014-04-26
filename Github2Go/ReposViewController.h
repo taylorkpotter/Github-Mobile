@@ -12,5 +12,7 @@
 
 @interface ReposViewController : UIViewController
 @property (nonatomic,unsafe_unretained) id <MenuProtocol> delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *userAvatar;
+
 
 @end

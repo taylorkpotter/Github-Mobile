@@ -17,6 +17,11 @@
   
   self.repoURL = [dictionary objectForKey:@"html_url"];
   self.repoName = [dictionary objectForKey:@"name"];
+  self.avatarURL = [dictionary objectForKey:@"avatar_url"];
+  self.userURL = [dictionary objectForKey:@"url"];
+  self.userName = [dictionary objectForKey:@"login"];
+
+
 
   
   return self;

@@ -19,7 +19,8 @@
 @property (weak, nonatomic) NetworkController *networkController;
 @property (weak, nonatomic) AppDelegate *appDelegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIImageView *userAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *repoViewTitle;
+
 
 @end
 
@@ -31,6 +32,8 @@
 {
     [super viewDidLoad];
   
+      self.repoViewTitle.text = @"u s e r s";
+
       self.appDelegate = [UIApplication sharedApplication].delegate;
   
       self.networkController = self.appDelegate.networkController;
@@ -42,6 +45,7 @@
 {
   [super viewDidAppear:animated];
   
+
     /* Sends the message to retreive Repos for current authorized users */
     [self.networkController retreiveReposForCurrentUserWithCompletion:^(NSMutableArray *repo) {
       
@@ -49,7 +53,7 @@
     
       /* Reloading table on main thread using GCD */
       dispatch_async(dispatch_get_main_queue(), ^{
-        
+
         [self.tableView reloadData];
       
       });

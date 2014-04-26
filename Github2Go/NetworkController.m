@@ -7,6 +7,7 @@
 //
 
 #import "NetworkController.h"
+#import "ReposViewController.h"
 #import "Repo.h"
 
 @interface NetworkController ()
@@ -16,6 +17,7 @@
 
 /* Need a better understanding of why I'm passing a block in as a property */
 @property (copy, nonatomic) void (^completionOfOAuthAccess)();
+@property (strong, nonatomic) ReposViewController *repoVC;
 
 @end
 @implementation NetworkController
@@ -32,6 +34,10 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     self.userToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"userToken"];
     self.url = [NSURLSession sessionWithConfiguration:configuration];
+    
+    
+    
+    
   }
   
   
@@ -56,33 +62,35 @@
 
 -(void)retreiveReposForCurrentUserWithCompletion:(void(^)(NSMutableArray *userRepoArray))completionBlock
 {
-  NSURL *userRepoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",GITHUB_API_URL,@"user/repos?sort=updated&order=desc"]];
-  
+  NSURL *userRepoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",GITHUB_USERS_REPOS_URL]];
+
   NSMutableURLRequest *request = [NSMutableURLRequest new];
   [request setURL:userRepoURL];
   [request setHTTPMethod:@"GET"];
   [request setValue:[NSString stringWithFormat:@"token %@", _userToken] forHTTPHeaderField:@"Authorization"];
   
-  NSURLSessionDataTask *getDataTask = [self.url dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    NSLog(@"Response is %@", response.description);
+  NSURLSessionDataTask *getDataTask = [self.url dataTaskWithRequest:request
+                                                  completionHandler:^(NSData *data,
+                                                                      NSURLResponse *response,
+                                                                      NSError *error) {
     
-    NSMutableArray *tempJSONArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+  NSMutableArray *tempJSONArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
-    NSMutableArray *userRepoArray = [NSMutableArray new];
+  NSMutableArray *userRepoArray = [NSMutableArray new];
 
     [tempJSONArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
       Repo *newRepo = [Repo new];
       newRepo.repoName = [obj objectForKey:@"name"];
       newRepo.repoURL = [obj objectForKey:@"html_url"];
+      newRepo.userURL = [obj objectForKey:@"url"];
+      newRepo.avatarURL = [obj objectForKey:@"avatar_url"];
+      
+      NSLog(@"%@", newRepo.repoURL);
       
       [userRepoArray addObject:newRepo];
-     
+           
     }];
     
-    if ([userRepoArray isKindOfClass:[NSMutableArray class]])
-    {
-      NSLog(@"%@", userRepoArray);
-    }
     
     dispatch_async(dispatch_get_main_queue(), ^{
       completionBlock(userRepoArray);
@@ -96,8 +104,6 @@
   
 
 }
-
-  
 
 
 -(void)handleOAuthCallbackWithURL:(NSURL *)url
@@ -132,6 +138,7 @@
 
 #pragma mark - Returns code from callBackURL
 
+
 -(NSString *)getCodeFromCallBackURL:(NSURL *)callBackURL
 {
   NSString *query = [callBackURL query];
@@ -140,11 +147,12 @@
   
 }
 
+
 #pragma mark - Convert Response Data Into Token
 
 -(NSString *)convertResponseDataIntoToken:(NSData*)responseData
 
-  {
+{
   NSString *tokenResponse = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
   
   NSArray  *tokenComponents = [tokenResponse componentsSeparatedByString:@"&"];

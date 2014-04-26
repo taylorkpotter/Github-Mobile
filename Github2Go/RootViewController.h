@@ -13,18 +13,3 @@
 
 @end
 
-
-//- (instancetype)initViewControllerWithIdentifier:(NSString *)identifier title:(NSString *)title andDropShadow:(UIViewController *)vc;
-//
-//- (instancetype)initViewControllerWithIdentifier:(NSString *)identifier title:(NSString *)title andDropShadow:(UIViewController *)vc
-//
-//{
-//  self = [self init];
-//
-//  vc.view.layer.shadowOffset = CGSizeMake(1, 1);
-//  vc.view.layer.shadowColor = [[UIColor blackColor] CGColor];
-//  vc.view.layer.shadowRadius = 20.0f;
-//  vc.view.layer.shadowOpacity = 0.8f;
-//
-//  return self;
-//}

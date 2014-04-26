@@ -10,7 +10,7 @@
 
 @interface Repo : NSObject
 
-@property (nonatomic, strong) NSString *repoURL, *repoName;
+@property (nonatomic, strong) NSString *repoURL, *repoName, *avatarURL, *userURL, *userName;
 
 -(instancetype)initWithJSONDictionary:(NSDictionary *)dictionary;
 

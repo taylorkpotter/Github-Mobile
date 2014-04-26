@@ -11,13 +11,14 @@
 #import "TOWebViewController.h"
 #import "AppDelegate.h"
 #import "Repo.h"
-#import "User.h"
 
 @interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *searchViewTitle;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *identifier;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBarAndScope;
 
 @property (weak, nonatomic) NetworkController *networkController;
 @property (weak, nonatomic) AppDelegate       *appDelegate;
@@ -28,23 +29,39 @@
 
 @implementation SearchViewController
 
+
+
 #pragma mark - View Did Load
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-      /* Instantiates our search results array which will hold our repo/users queries */
+      /* Instantiates our search results array which will hold our repo/user queries */
       _searchResults = [NSMutableArray new];
   
-      /* Become delegate of App Delegate */
+      /* Become delegate of AppDelegate */
       self.appDelegate = [UIApplication sharedApplication].delegate;
   
-      /* Become delegate of Network Controller */
+      /* Become delegate of UISearchBar */
+      self.searchBarAndScope.delegate = self;
+  
+      /* Become delegate of NetworkController */
       self.networkController = self.appDelegate.networkController;
+  
+      /* Sets up Search place holder png which comes with drop shadow on all sides */
+      self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 147, 320, 422)];
+      self.imageView.image = [UIImage imageNamed:@"search.png"];
+  
+      // Hide Search Bar
+      CGRect newBounds = _tableView.bounds;
+      newBounds.origin.y = newBounds.origin.y + self.searchDisplayController.searchBar.bounds.size.height;
+      _tableView.bounds = newBounds;
 
   
 }
+
+
 
 #pragma mark - View Did Appear
 
@@ -61,7 +78,14 @@
 - (IBAction)menuPressed:(id)sender
 {
   [self.delegate menuPressed];
+  [self.searchBarAndScope resignFirstResponder];
+  self.searchBarAndScope.text = nil;
+  [self.searchResults removeAllObjects];
+  [self.tableView reloadData];
+
+  
 }
+
 
 #pragma mark - UISearchBarDelegate
 
@@ -82,8 +106,10 @@
     self.identifier = @"searchRepos";
     [self reposForSearchString:[NSString stringWithFormat:@"search/repositories?q=%@&sort=stars&order=desc", searchBar.text]];
   }
+  [_searchBarAndScope resignFirstResponder];
   [self.tableView reloadData];
 }
+
 
 -(void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
 {
@@ -104,6 +130,7 @@
 
 -(void)reposForSearchString:(NSString *)searchString
 {
+  
   //Handles a search with multiple words by adding +'s where spaces occur
   searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
   
@@ -139,14 +166,14 @@
       for (NSDictionary *userDict in tempArray ) {
         
         //Creates an instance of Repo passing in name/url
-        User *tempUser = [[User alloc] initWithJSONDictionary:userDict];
+        Repo *tempUser = [[Repo alloc] initWithJSONDictionary:userDict];
         
         //Adds the Repo instance to our Repo Array
         [self.searchResults addObject:tempUser];
       }
     }
-  
-
+    
+    
     //Reload table once for finds all the names/urls
     [self.tableView reloadData];
     
@@ -158,13 +185,24 @@
   
 }
 
+
 #pragma mark - UITableView
 
 //Amount of rows in section based on the count of the arrayOfViewControllers
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   //Calls our main method below passing in the the queried string
-  return self.searchResults.count;
+
+    if(self.searchResults.count == 0)
+    {
+      tableView.scrollEnabled = NO;
+      tableView.separatorColor = [UIColor clearColor];
+      [self.view addSubview:self.imageView];
+    } else {
+      [self.imageView removeFromSuperview];
+      tableView.scrollEnabled = YES;
+    }
+       return self.searchResults.count;
 }
 
 //This sets up the prototype cell and gives it the name of the given object in the array
@@ -177,9 +215,10 @@
 
   if ([self.identifier isEqualToString:@"searchRepos"]) {
     cell.textLabel.text = [self.searchResults[indexPath.row] repoName];
-  } else {
+  } else  {
     cell.textLabel.text = [self.searchResults[indexPath.row] userName];
   }
+
   
   return cell;
 }
@@ -187,12 +226,22 @@
 //This method uses a CocoaPod to instantiate a custom WebViewController
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+  if ([self.identifier isEqualToString:@"searchRepos"])
+  {
     TOWebViewController *wvc = [[TOWebViewController alloc] initWithURLString:[_searchResults[indexPath.row] repoURL]];
-  
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:wvc] animated:YES completion:nil];
+  } else {
+    TOWebViewController *wvc = [[TOWebViewController alloc] initWithURLString:[_searchResults[indexPath.row] repoURL]];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:wvc] animated:YES completion:nil];
+  }
   
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+  
 }
 @end
+
+
+
+//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:_searchResults] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:604800];
+//
+//  [self.webView loadRequest:urlRequest];

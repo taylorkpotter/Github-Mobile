@@ -7,6 +7,10 @@
 //
 
 #import "UsersViewController.h"
+#import "AppDelegate.h"
+#import "NetworkController.h"
+#import "User.h"
+#import "UserCell.h"
 
 @interface UsersViewController ()
 

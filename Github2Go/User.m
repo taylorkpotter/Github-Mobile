@@ -19,6 +19,7 @@
   self.followers = [dictionary objectForKey:@"followers_url"];
   self.userID = [dictionary objectForKey:@"id"];
   self.userName = [dictionary objectForKey:@"login"];
+  self.repoName = [dictionary objectForKey:@"name"];
   
   return self;
 }
